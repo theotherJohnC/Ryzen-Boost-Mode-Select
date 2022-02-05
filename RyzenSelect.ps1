@@ -16,7 +16,7 @@ function promptMode {
             $null = Read-Host 'Ryzen Boost is set to OFF. Press any key to exit'
         }
         3 {
-            Write-Host "`nSetting Ryzen Boost to AC=ON and DC=OFF..."
+            Write-Host "`nSetting Ryzen Boost to AC=ON and DC=OFF...`n"
             powercfg -setacvalueindex scheme_current sub_processor PERFBOOSTMODE 1
             powercfg -setdcvalueindex scheme_current sub_processor PERFBOOSTMODE 0
             $null = Read-Host 'Ryzen Boost is set to AC=ON and DC=OFF. Press any key to exit'
@@ -34,8 +34,8 @@ function writeMenu {
     Write-Host "Written by John Crist (john.crist@outlook.com)`n"
     Write-Host "Please select from the following performance modes:"
     Write-Host "1) Ryzen Boost ON (higher CPU performance)"
-    Write-Host "2) Ryzen Boost OFF (power efficiency, lower temperatures)`n"
-    Write-Host "3) Ryzen Boost ON when plugged in, OFF when on battery"
+    Write-Host "2) Ryzen Boost OFF (power efficiency, lower temperatures)"
+    Write-Host "3) Ryzen Boost ON when plugged in, OFF when on battery`n"
     promptMode
 }
 
