@@ -9,21 +9,25 @@ It should also be noted that, while this technically should work for Intel proce
 
 ## Usage
 
-There are two ways to use the utility. Running the executable (.exe) directly presents a brief menu with selections. You can also call the application with the following arguments:
+There are two ways to use the utility. Running the executable (.exe) directly presents a brief menu with selections. You can also call the PowerShell script (.ps1) with the following arguments:
 
 **Setting Boost Mode to Always On**
 ```
-.\RyzenSelect.exe on
+.\RyzenSelect.ps1 on
 ```
 
 **Setting Boost Mode to Always Off**
 ```
-.\RyzenSelect.exe off
+.\RyzenSelect.ps1 off
 ```
 **Setting Boost Mode to On when plugged in, Off when on battery**
 ```
-.\RyzenSelect.exe acon
+.\RyzenSelect.ps1 acon
 ```
+
+## Roadmap
+My intention is to use WinForms to give users a GUI to quickly launch, select a mode, and exit rather than a CLI menu. I also would like to display the current mode and, if possible, processor sensor statistics.
+
 ## Disclaimer and License
 If you use this software, you use it ON YOUR OWN RISK. I **DO NOT** accept responsibility for anything that happens with the use of this software. Nothing here *should* cause anything bad to happen, and between PowerShell's safeguards and the means by which this software controls the power configuration the worst that should happen is it simply doesn't change anything, but this paragraph is just here so I can sleep at night. ;)
 
