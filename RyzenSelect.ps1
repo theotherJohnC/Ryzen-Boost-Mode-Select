@@ -1,26 +1,38 @@
+
+function boostOn {
+    powercfg -setacvalueindex scheme_current sub_processor PERFBOOSTMODE 1
+    powercfg -setdcvalueindex scheme_current sub_processor PERFBOOSTMODE 1
+}
+
+function boostOff {
+    powercfg -setacvalueindex scheme_current sub_processor PERFBOOSTMODE 0
+    powercfg -setdcvalueindex scheme_current sub_processor PERFBOOSTMODE 0
+}
+
+function acOn {
+    powercfg -setacvalueindex scheme_current sub_processor PERFBOOSTMODE 1
+    powercfg -setdcvalueindex scheme_current sub_processor PERFBOOSTMODE 0
+}
 function promptMode {
     $powerMode = Read-Host "Which power mode would you like (1, 2)"
     switch ($powerMode) {
         1 {
             Write-Host "`nSetting Ryzen Boost to ON...`n"
             Start-Sleep -s 3
-            powercfg -setacvalueindex scheme_current sub_processor PERFBOOSTMODE 1
-            powercfg -setdcvalueindex scheme_current sub_processor PERFBOOSTMODE 1
+            boostOn
             $null = Read-Host 'Ryzen Boost is set to ON. Press any key to exit'
         }
         2 {
             Write-Host "`nSetting Ryzen Boost to OFF...`n"
             Start-Sleep -s 3
-            powercfg -setacvalueindex scheme_current sub_processor PERFBOOSTMODE 0
-            powercfg -setdcvalueindex scheme_current sub_processor PERFBOOSTMODE 0
+            boostOff
             $null = Read-Host 'Ryzen Boost is set to OFF. Press any key to exit'
         }
         3 {
-            Write-Host "`nSetting Ryzen Boost to AC=ON and DC=OFF...`n"
+            Write-Host "`nSetting Ryzen Boost to ON only when plugged in...`n"
             Start-Sleep -s 3
-            powercfg -setacvalueindex scheme_current sub_processor PERFBOOSTMODE 1
-            powercfg -setdcvalueindex scheme_current sub_processor PERFBOOSTMODE 0
-            $null = Read-Host 'Ryzen Boost is set to AC=ON and DC=OFF. Press any key to exit'
+            acOn
+            $null = Read-Host 'Ryzen Boost is set to ON only when plugged in. Press any key to exit'
         }
         default {
             Write-Host "`n`nYou didn't select a valid menu option.`n"
@@ -40,4 +52,18 @@ function writeMenu {
     promptMode
 }
 
-writeMenu
+$modeSwitch = $args[0]
+switch ($modeSwitch) {
+    "on" {
+        boostOn
+    }
+    "off" {
+        boostOff
+    }
+    "ac" {
+        acOn
+    }
+    default {
+        writeMenu
+    }
+}
