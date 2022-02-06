@@ -17,6 +17,7 @@ function promptMode {
         }
         3 {
             Write-Host "`nSetting Ryzen Boost to AC=ON and DC=OFF...`n"
+            Start-Sleep -s 3
             powercfg -setacvalueindex scheme_current sub_processor PERFBOOSTMODE 1
             powercfg -setdcvalueindex scheme_current sub_processor PERFBOOSTMODE 0
             $null = Read-Host 'Ryzen Boost is set to AC=ON and DC=OFF. Press any key to exit'
