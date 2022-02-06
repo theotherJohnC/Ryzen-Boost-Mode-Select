@@ -9,20 +9,24 @@ It should also be noted that, while this technically should work for Intel proce
 
 ## Usage
 
-There are two ways to use the utility. Running the executable (.exe) directly presents a brief menu with selections. You can also call the PowerShell script (.ps1) with the following arguments:
+There are two ways to use the utility. Running the executable (.exe) directly presents a brief menu with selections. You can also call the application through the CLI with the following arguments:
 
-**Setting Boost Mode to Always On**
+**Setting Boost Mode to ENABLED**
 ```
-.\RyzenSelect.ps1 on
+.\RyzenSelect.exe -enabled
 ```
 
-**Setting Boost Mode to Always Off**
+**Setting Boost Mode to ENABLED on AC POWER ONLY**
 ```
-.\RyzenSelect.ps1 off
+.\RyzenSelect.exe -enabledac
 ```
-**Setting Boost Mode to On when plugged in, Off when on battery**
+**Setting Boost Mode to AGGRESSIVE**
 ```
-.\RyzenSelect.ps1 acon
+.\RyzenSelect.exe -aggressive
+```
+**Setting Boost Mode to DISABLED**
+```
+.\RyzenSelect.exe -disabled
 ```
 
 ## Roadmap
